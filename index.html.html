@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maliisn Mansson | Cosmic Champion Records LLC</title>
+<meta name="description" content="Official website of Kenyan hip-hop artist Maliisn Mansson and Cosmic Champion Records. Stream singles, albums, mixtapes, and shop exclusive hoodies, caps, and marvins.">
+<meta name="keywords" content="Maliisn Mansson, Cosmic Champion Records, Kenyan hip-hop, Kenya rap, singles, mixtapes, albums, hoodies, caps, marvins, beanies, official merch">
+<meta name="author" content="Cosmic Champion Records LLC">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cosmic Champion Records LLC">
+<meta property="og:title" content="Maliisn Mansson | Cosmic Champion Records LLC">
+<meta property="og:description" content="Official website of Kenyan hip-hop artist Maliisn Mansson and Cosmic Champion Records. Stream singles, albums, mixtapes, and shop exclusive hoodies, caps, and marvins.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Maliisn Mansson | Cosmic Champion Records LLC">
+<meta name="twitter:description" content="Stream singles, albums and mixtapes, and shop exclusive hoodies, caps and marvins.">
+<meta name="theme-color" content="#05040a">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+<script>
+tailwind.config = { theme: { extend: {
+  colors:{ void:'#05040a', gold:'#f5c451', neon:'#39ffb6', plasma:'#a35bff', hot:'#ff4d9d' },
+  fontFamily:{ display:['Anton','sans-serif'], body:['Space Grotesk','sans-serif'], marker:['Permanent Marker','cursive'] }
+} } }
+</script>
+<style>
+  :root{ --gold:#f5c451; --neon:#39ffb6; --plasma:#a35bff; --hot:#ff4d9d; }
+  *{ -webkit-tap-highlight-color:transparent; }
+  body{ background:#05040a; color:#ecebf5; font-family:'Space Grotesk',sans-serif; overflow-x:hidden; }
+  @media (hover:hover) and (pointer:fine){ body{ cursor:none; } a,button,select{ cursor:none; } }
+
+  /* ---------- loader ---------- */
+  #loader{ position:fixed; inset:0; z-index:200; background:#05040a; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1.5rem; transition:opacity .8s, visibility .8s; }
+  #loader.hide{ opacity:0; visibility:hidden; }
+  .loader-ring{ width:90px; height:90px; border-radius:50%; border:2px solid rgba(255,255,255,.1); border-top-color:var(--gold); border-right-color:var(--neon); animation:spin 1s linear infinite; box-shadow:0 0 40px rgba(245,196,81,.35); }
+  @keyframes spin{ to{ transform:rotate(360deg);} }
+
+  /* ---------- backgrounds ---------- */
+  #stars{ position:fixed; inset:0; z-index:-3; }
+  .nebula{ position:fixed; inset:0; z-index:-2; pointer-events:none; filter:blur(10px);
+    background:
+      radial-gradient(900px 600px at 10% 5%, rgba(163,91,255,.28), transparent 60%),
+      radial-gradient(800px 600px at 95% 35%, rgba(57,255,182,.12), transparent 60%),
+      radial-gradient(1000px 700px at 50% 105%, rgba(245,196,81,.16), transparent 60%),
+      radial-gradient(500px 400px at 70% 70%, rgba(255,77,157,.10), transparent 60%); }
+  .grain::after{ content:''; position:fixed; inset:0; pointer-events:none; z-index:150; opacity:.08;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>"); }
+
+  /* ---------- cursor ---------- */
+  .cursor,.cursor-dot{ position:fixed; top:0; left:0; pointer-events:none; z-index:180; border-radius:50%; display:none; }
+  @media (hover:hover) and (pointer:fine){ .cursor,.cursor-dot{ display:block; } }
+  .cursor{ width:38px; height:38px; border:1.5px solid var(--gold); margin:-19px 0 0 -19px; transition:width .25s,height .25s,margin .25s,background .25s,border-color .25s; mix-blend-mode:difference; }
+  .cursor.big{ width:70px; height:70px; margin:-35px 0 0 -35px; background:rgba(57,255,182,.18); border-color:var(--neon); }
+  .cursor-dot{ width:6px; height:6px; margin:-3px 0 0 -3px; background:var(--gold); box-shadow:0 0 14px var(--gold); }
+
+  /* ---------- glass / type / buttons ---------- */
+  .glass{ background:rgba(255,255,255,.05); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,.10); box-shadow:0 8px 40px rgba(0,0,0,.45); }
+  .glow-gold{ text-shadow:0 0 28px rgba(245,196,81,.6); }
+  .glow-neon{ text-shadow:0 0 24px rgba(57,255,182,.65); }
+  .shimmer{ background:linear-gradient(100deg,#f5c451 20%,#fff6d6 40%,#f5c451 60%,#ff9d2e 80%); background-size:250% 100%; -webkit-background-clip:text; background-clip:text; color:transparent; animation:shim 5s linear infinite; filter:drop-shadow(0 0 22px rgba(245,196,81,.45)); }
+  @keyframes shim{ to{ background-position:-250% 0; } }
+  .glitch{ position:relative; display:block; }
+  .glitch::before,.glitch::after{ content:attr(data-text); position:absolute; inset:0; overflow:hidden; opacity:.75; }
+  .glitch::before{ color:var(--neon); transform:translate(3px,0); clip-path:inset(0 0 60% 0); animation:gl1 3.2s infinite steps(1); }
+  .glitch::after{ color:var(--hot); transform:translate(-3px,0); clip-path:inset(55% 0 0 0); animation:gl2 2.7s infinite steps(1); }
+  @keyframes gl1{ 0%,88%,100%{ clip-path:inset(0 0 100% 0);} 90%{ clip-path:inset(10% 0 60% 0);} 94%{ clip-path:inset(40% 0 30% 0);} }
+  @keyframes gl2{ 0%,80%,100%{ clip-path:inset(100% 0 0 0);} 83%{ clip-path:inset(60% 0 10% 0);} 91%{ clip-path:inset(20% 0 55% 0);} }
+  .stamp{ font-family:'Permanent Marker',cursive; transform:rotate(-4deg); color:var(--gold); display:inline-block; }
+
+  .btn{ position:relative; display:inline-flex; align-items:center; justify-content:center; gap:.5rem; padding:.9rem 1.6rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; font-size:.78rem; border-radius:.3rem; transition:.25s; overflow:hidden; }
+  .btn::after{ content:''; position:absolute; top:0; left:-120%; width:60%; height:100%; background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent); transform:skewX(-20deg); transition:.6s; }
+  .btn:hover::after{ left:140%; }
+  .btn-gold{ background:linear-gradient(135deg,#f5c451,#ff9d2e); color:#111; box-shadow:0 0 28px rgba(245,196,81,.35); }
+  .btn-gold:hover{ transform:translateY(-2px); box-shadow:0 0 46px rgba(245,196,81,.75); }
+  .btn-ghost{ border:1px solid var(--neon); color:var(--neon); }
+  .btn-ghost:hover{ background:var(--neon); color:#05040a; box-shadow:0 0 34px rgba(57,255,182,.6); }
+  .btn-line{ border:1px solid rgba(255,255,255,.25); }
+  .btn-line:hover{ border-color:var(--gold); color:var(--gold); }
+  .nav-link{ position:relative; font-size:.78rem; letter-spacing:.2em; text-transform:uppercase; }
+  .nav-link::after{ content:''; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:var(--gold); box-shadow:0 0 10px var(--gold); transition:.3s; }
+  .nav-link:hover::after{ width:100%; }
+
+  /* ---------- reveal ---------- */
+  .reveal{ opacity:0; transform:translateY(40px); transition:opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in{ opacity:1; transform:none; }
+
+  /* ---------- hero ---------- */
+  .grid-floor{ position:absolute; left:-25%; right:-25%; bottom:0; height:46%; perspective:380px; pointer-events:none; mask-image:linear-gradient(to top,#000 20%,transparent); -webkit-mask-image:linear-gradient(to top,#000 20%,transparent); }
+  .grid-floor div{ position:absolute; inset:0; transform:rotateX(62deg); transform-origin:bottom;
+    background-image:linear-gradient(rgba(245,196,81,.55) 1px,transparent 1px),linear-gradient(90deg,rgba(163,91,255,.55) 1px,transparent 1px);
+    background-size:60px 60px; animation:floor 2.2s linear infinite; }
+  @keyframes floor{ to{ background-position:0 60px; } }
+  .emblem{ position:relative; width:min(78vw,470px); aspect-ratio:1; margin-inline:auto; }
+  .emblem > *{ position:absolute; }
+  .orbit-text{ inset:0; animation:spin 40s linear infinite; }
+  .orbit-ring{ border-radius:50%; border:1px dashed rgba(255,255,255,.2); }
+  .sat{ width:100%; height:100%; inset:0; animation:spin 14s linear infinite; }
+  .sat::after{ content:''; position:absolute; top:-6px; left:50%; width:12px; height:12px; border-radius:50%; background:var(--neon); box-shadow:0 0 18px var(--neon); }
+  .sat.s2{ animation-duration:22s; animation-direction:reverse; }
+  .sat.s2::after{ background:var(--hot); box-shadow:0 0 18px var(--hot); }
+  .bob{ animation:bob 6s ease-in-out infinite; }
+  @keyframes bob{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-14px);} }
+  .sticker{ font-family:'Permanent Marker',cursive; padding:.35rem .8rem; border-radius:.3rem; font-size:.95rem; box-shadow:0 8px 24px rgba(0,0,0,.5); }
+
+  /* ---------- vinyl ---------- */
+  .vinyl{ position:relative; border-radius:50%; aspect-ratio:1;
+    background:
+      radial-gradient(circle at 50% 50%, transparent 0 30%, rgba(255,255,255,.04) 30.5%, transparent 31%),
+      repeating-radial-gradient(circle at 50% 50%, #0a0a10 0 2px, #16161f 2px 3px),
+      #0a0a10;
+    box-shadow:0 18px 50px rgba(0,0,0,.65), inset 0 0 0 2px rgba(255,255,255,.05); }
+  .vinyl::before{ content:''; position:absolute; inset:0; border-radius:50%; background:conic-gradient(from 20deg, transparent 0 20%, rgba(255,255,255,.14) 25%, transparent 30% 70%, rgba(255,255,255,.12) 75%, transparent 80%); }
+  .vinyl .label{ position:absolute; inset:34%; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Anton'; color:#111; letter-spacing:.05em; font-size:.8em; background:radial-gradient(circle at 35% 30%,#fff2c4,#f5c451 45%,#ff9d2e); }
+  .vinyl .label::after{ content:''; position:absolute; width:9%; aspect-ratio:1; border-radius:50%; background:#05040a; }
+  .spin-slow{ animation:spin 9s linear infinite; }
+  .spinning{ animation:spin 2.4s linear infinite !important; }
+
+  /* ---------- tabs ---------- */
+  .tab-btn{ padding:.65rem 1.3rem; font-size:.74rem; letter-spacing:.18em; text-transform:uppercase; border:1px solid rgba(255,255,255,.15); border-radius:999px; transition:.25s; }
+  .tab-btn:hover{ border-color:var(--gold); }
+  .tab-btn.active{ background:var(--gold); color:#111; border-color:var(--gold); box-shadow:0 0 26px rgba(245,196,81,.55); }
+  .tab-panel{ display:none; } .tab-panel.active{ display:block; animation:fade .55s ease; }
+  @keyframes fade{ from{ opacity:0; transform:translateY(14px);} to{ opacity:1; transform:none;} }
+
+  /* ---------- tilt cards ---------- */
+  .tilt{ transform-style:preserve-3d; transition:transform .15s ease-out, box-shadow .3s, border-color .3s; will-change:transform; position:relative; }
+  .tilt::after{ content:''; position:absolute; inset:0; border-radius:inherit; pointer-events:none; background:radial-gradient(circle at var(--gx,50%) var(--gy,50%), rgba(255,255,255,.22), transparent 45%); opacity:0; transition:opacity .3s; }
+  .tilt:hover::after{ opacity:1; }
+  .tilt:hover{ border-color:rgba(245,196,81,.55); box-shadow:0 20px 60px rgba(245,196,81,.18); }
+  .art{ position:relative; aspect-ratio:1; overflow:hidden; border-radius:.6rem; }
+  .art svg{ width:100%; height:100%; display:block; }
+
+  /* ---------- waveform / eq ---------- */
+  .wave{ display:flex; align-items:center; gap:2px; height:26px; }
+  .wave i{ width:3px; border-radius:2px; background:rgba(255,255,255,.22); transition:background .3s; }
+  .playing .wave i{ background:var(--neon); animation:wv 1s ease-in-out infinite; }
+  @keyframes wv{ 0%,100%{ transform:scaleY(.35);} 50%{ transform:scaleY(1);} }
+  .eqbars{ display:inline-flex; gap:3px; align-items:flex-end; height:18px; }
+  .eqbars i{ width:4px; background:var(--neon); animation:eq .8s infinite ease-in-out; height:30%; box-shadow:0 0 8px var(--neon); }
+  .eqbars i:nth-child(2){ animation-delay:.15s;} .eqbars i:nth-child(3){ animation-delay:.3s;} .eqbars i:nth-child(4){ animation-delay:.45s;} .eqbars i:nth-child(5){ animation-delay:.6s;}
+  @keyframes eq{ 0%,100%{ height:20%;} 50%{ height:100%;} }
+
+  /* ---------- album sleeve ---------- */
+  .sleeve{ position:relative; width:100%; aspect-ratio:1; }
+  .sleeve .record{ position:absolute; top:5%; left:5%; width:90%; transition:transform .8s cubic-bezier(.2,.7,.2,1); }
+  .sleeve:hover .record, .sleeve.out .record{ transform:translateX(34%); }
+  .sleeve .cover-front{ position:absolute; inset:0; width:78%; height:78%; top:11%; border-radius:.4rem; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,.7); z-index:2; }
+
+  /* ---------- marquee ---------- */
+  .marquee{ display:flex; width:max-content; animation:marq 30s linear infinite; }
+  @keyframes marq{ to{ transform:translateX(-50%);} }
+
+  /* ---------- drawer / toast / player ---------- */
+  #drawer{ transform:translateX(100%); transition:transform .45s cubic-bezier(.7,0,.2,1); }
+  #drawer.open{ transform:none; }
+  #overlay{ opacity:0; pointer-events:none; transition:.3s; } #overlay.open{ opacity:1; pointer-events:auto; }
+  .toast{ position:fixed; bottom:96px; left:50%; transform:translate(-50%,30px); opacity:0; transition:.35s; z-index:120; pointer-events:none; }
+  .toast.show{ transform:translate(-50%,0); opacity:1; }
+  #player{ position:fixed; left:0; right:0; bottom:0; z-index:100; transform:translateY(110%); transition:transform .5s cubic-bezier(.2,.8,.2,1); }
+  #player.show{ transform:none; }
+  .progress{ height:3px; background:rgba(255,255,255,.12); } .progress i{ display:block; height:100%; width:0; background:linear-gradient(90deg,var(--neon),var(--gold)); box-shadow:0 0 12px var(--neon); }
+  select.size{ background:#0d0a1a; border:1px solid rgba(255,255,255,.15); border-radius:.25rem; padding:.35rem .5rem; font-size:.75rem; }
+
+  /* ---------- section divider ---------- */
+  .divider{ height:80px; width:100%; display:block; }
+  @media (prefers-reduced-motion:reduce){ *{ animation:none !important; transition:none !important; } .reveal{ opacity:1; transform:none; } }
+</style>
+</head>
+<body class="grain">
+
+<div id="loader"><div class="loader-ring"></div><div class="font-display tracking-[.4em] text-gold text-lg">ENTERING ORBIT</div></div>
+<div class="cursor" id="cursor"></div><div class="cursor-dot" id="cursorDot"></div>
+<canvas id="stars"></canvas>
+<div class="nebula"></div>
+
+<!-- ================= NAV ================= -->
+<header class="fixed top-0 inset-x-0 z-50">
+  <div class="glass mx-3 mt-3 rounded-lg">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+      <a href="#home" class="flex items-center gap-3 leading-none">
+        <svg viewBox="0 0 48 48" class="w-10 h-10 shrink-0" aria-hidden="true">
+          <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff2c4"/><stop offset="1" stop-color="#ff9d2e"/></linearGradient></defs>
+          <circle cx="24" cy="26" r="15" fill="none" stroke="url(#lg)" stroke-width="2.5"/>
+          <ellipse cx="24" cy="26" rx="22" ry="6" fill="none" stroke="#39ffb6" stroke-width="1.5" transform="rotate(-20 24 26)"/>
+          <path d="M12 14l5 6 7-10 7 10 5-6-2 12H14z" fill="url(#lg)"/>
+        </svg>
+        <span>
+          <span class="font-display text-lg sm:text-2xl tracking-wider text-gold glow-gold block">COSMIC CHAMPION RECORDS<span class="text-white/60"> LLC</span></span>
+          <span class="block text-[10px] tracking-[.35em] uppercase text-white/50 mt-1">featuring Maliisn Mansson</span>
+        </span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-8">
+        <a class="nav-link" href="#home">Home</a>
+        <a class="nav-link" href="#music">Music</a>
+        <a class="nav-link" href="#merch">Merch</a>
+        <a class="nav-link" href="#bio">Bio</a>
+        <a class="nav-link text-neon" href="#checkout">Checkout / Payments</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button id="cartBtn" class="btn btn-line !py-2 !px-4" aria-label="Open cart">Cart <span id="cartCount" class="ml-1 bg-gold text-black rounded-full text-[11px] px-2 py-0.5">0</span></button>
+        <button id="menuBtn" class="lg:hidden btn btn-line !py-2 !px-3" aria-label="Menu">☰</button>
+      </div>
+    </div>
+    <nav id="mobileNav" class="hidden lg:hidden px-4 pb-4 flex-col gap-3">
+      <a class="nav-link py-1" href="#home">Home</a><a class="nav-link py-1" href="#music">Music</a><a class="nav-link py-1" href="#merch">Merch</a><a class="nav-link py-1" href="#bio">Bio</a><a class="nav-link py-1 text-neon" href="#checkout">Checkout / Payments</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ================= HERO ================= -->
+<section id="home" class="relative min-h-screen flex items-center pt-32 pb-24 px-5 overflow-hidden">
+  <div class="grid-floor"><div></div></div>
+  <div class="max-w-7xl mx-auto w-full relative grid lg:grid-cols-2 gap-10 items-center">
+    <div class="relative z-10">
+      <p class="stamp text-xl sm:text-2xl mb-3">Kenya's Own. Galaxy Bound.</p>
+      <h1 class="font-display leading-[.86] uppercase text-[20vw] sm:text-[12vw] lg:text-[8.2rem]">
+        <span class="glitch text-white" data-text="Maliisn">Maliisn</span>
+        <span class="shimmer block">Mansson</span>
+      </h1>
+      <p class="mt-6 max-w-xl text-white/75 text-lg">The pinnacle of Kenyan hip-hop. Raw street stories, cosmic ambition and bars built to outlast the noise. Straight from <span class="text-neon">Cosmic Champion Records</span>.</p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a href="#checkout" class="btn btn-gold">Buy Music</a>
+        <a href="#music" data-tab="singles" class="btn btn-ghost goto-tab">▶ Listen to Latest</a>
+        <a href="#merch" class="btn btn-line">Shop Merch</a>
+      </div>
+      <div class="mt-12 grid grid-cols-3 gap-3 max-w-lg">
+        <div class="glass rounded-lg p-4 text-center"><div class="font-display text-3xl text-gold" data-count="5">0</div><div class="text-[11px] tracking-widest uppercase text-white/50">Singles</div></div>
+        <div class="glass rounded-lg p-4 text-center"><div class="font-display text-3xl text-neon" data-count="3">0</div><div class="text-[11px] tracking-widest uppercase text-white/50">Mixtapes</div></div>
+        <div class="glass rounded-lg p-4 text-center"><div class="font-display text-3xl text-plasma" data-count="1">0</div><div class="text-[11px] tracking-widest uppercase text-white/50">Album</div></div>
+      </div>
+    </div>
+
+    <!-- emblem artwork -->
+    <div class="emblem" id="emblem">
+      <!-- planet with ring -->
+      <svg class="bob" data-depth="14" style="inset:-6% -14% auto auto; width:46%;" viewBox="0 0 200 200" aria-hidden="true">
+        <defs>
+          <radialGradient id="pl" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#ffe9a8"/><stop offset=".45" stop-color="#f5c451"/><stop offset=".8" stop-color="#7a3cff"/><stop offset="1" stop-color="#1a0b3a"/></radialGradient>
+        </defs>
+        <ellipse cx="100" cy="100" rx="96" ry="26" fill="none" stroke="rgba(57,255,182,.7)" stroke-width="3" transform="rotate(-18 100 100)"/>
+        <circle cx="100" cy="100" r="56" fill="url(#pl)"/>
+        <path d="M60 90q40 14 80-4M56 112q44 16 90-6" stroke="rgba(0,0,0,.25)" stroke-width="5" fill="none"/>
+        <path d="M6 112 C40 140, 150 76, 194 88" stroke="rgba(57,255,182,.9)" stroke-width="3" fill="none" transform="rotate(-18 100 100)" stroke-dasharray="60 400" stroke-dashoffset="-170"/>
+      </svg>
+      <!-- small moon -->
+      <svg class="bob" data-depth="22" style="left:-6%; bottom:6%; width:20%; animation-delay:-3s;" viewBox="0 0 100 100" aria-hidden="true">
+        <defs><radialGradient id="mn" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#d9fff0"/><stop offset=".5" stop-color="#39ffb6"/><stop offset="1" stop-color="#062a20"/></radialGradient></defs>
+        <circle cx="50" cy="50" r="44" fill="url(#mn)"/><circle cx="36" cy="40" r="7" fill="rgba(0,0,0,.18)"/><circle cx="62" cy="62" r="9" fill="rgba(0,0,0,.18)"/><circle cx="64" cy="34" r="4" fill="rgba(0,0,0,.18)"/>
+      </svg>
+      <!-- orbit rings -->
+      <div class="orbit-ring" style="inset:4%;"></div>
+      <div class="orbit-ring" style="inset:14%; border-color:rgba(245,196,81,.25);"></div>
+      <div class="sat" style="inset:4%; width:92%; height:92%;"></div>
+      <div class="sat s2" style="inset:14%; width:72%; height:72%;"></div>
+      <!-- rotating text ring -->
+      <svg class="orbit-text" viewBox="0 0 400 400" aria-hidden="true">
+        <defs><path id="circ" d="M200,200 m-176,0 a176,176 0 1,1 352,0 a176,176 0 1,1 -352,0"/></defs>
+        <text font-family="Anton" font-size="21" letter-spacing="6.4" fill="rgba(245,196,81,.85)"><textPath href="#circ">COSMIC CHAMPION RECORDS ✦ MALIISN MANSSON ✦ KENYAN HIP-HOP ✦ COSMIC CHAMPION RECORDS ✦</textPath></text>
+      </svg>
+      <!-- central vinyl -->
+      <div class="vinyl spin-slow" data-depth="6" style="inset:22%;"><div class="label" style="font-size:clamp(10px,2.4vw,18px)">CCR</div></div>
+      <!-- crown -->
+      <svg class="bob" data-depth="18" style="left:50%; top:3%; width:30%; transform:translateX(-50%); animation-delay:-1.5s;" viewBox="0 0 120 80" aria-hidden="true">
+        <defs><linearGradient id="cr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff2c4"/><stop offset="1" stop-color="#ff9d2e"/></linearGradient>
+        <filter id="cg"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+        <path filter="url(#cg)" d="M8 66L14 20l28 24 18-34 18 34 28-24 6 46z" fill="url(#cr)" stroke="#fff6d6" stroke-width="1.5" stroke-linejoin="round"/>
+        <circle cx="14" cy="18" r="5" fill="#39ffb6"/><circle cx="60" cy="8" r="5" fill="#ff4d9d"/><circle cx="106" cy="18" r="5" fill="#a35bff"/>
+        <rect x="8" y="64" width="104" height="10" rx="3" fill="#ff9d2e"/>
+      </svg>
+      <!-- stickers -->
+      <div class="sticker bg-hot text-white absolute" style="right:-2%; bottom:12%; transform:rotate(8deg);">NAIROBI ✦ KE</div>
+      <div class="sticker bg-neon text-black absolute" style="left:-3%; top:30%; transform:rotate(-9deg);">NEW DROP</div>
+    </div>
+  </div>
+</section>
+
+<!-- marquee -->
+<div class="overflow-hidden border-y border-white/10 py-3 bg-black/50">
+  <div class="marquee font-display text-2xl tracking-[.2em] text-white/30 uppercase" id="marq"></div>
+</div>
+
+<!-- ================= MUSIC ================= -->
+<section id="music" class="py-24 px-5">
+  <div class="max-w-7xl mx-auto">
+    <div class="reveal">
+      <p class="stamp text-lg">The Vault</p>
+      <h2 class="font-display text-5xl sm:text-7xl uppercase">The <span class="shimmer">Music</span></h2>
+      <div class="mt-8 flex flex-wrap gap-2" role="tablist">
+        <button class="tab-btn active" data-tab="singles">Singles</button>
+        <button class="tab-btn" data-tab="mixtapes">Mixtapes</button>
+        <button class="tab-btn" data-tab="albums">Albums</button>
+        <button class="tab-btn" data-tab="features">Features</button>
+      </div>
+    </div>
+    <div class="mt-10 reveal">
+      <div id="singles" class="tab-panel active">
+        <div class="grid lg:grid-cols-5 gap-8 items-start">
+          <div class="lg:col-span-2 hidden lg:flex flex-col items-center sticky top-28">
+            <div class="vinyl spin-slow w-full max-w-sm" id="bigVinyl"><div class="label" style="font-size:1.4rem">LATEST</div></div>
+            <p class="mt-5 text-xs tracking-[.3em] uppercase text-white/50" id="bigVinylLbl">Select a single to spin</p>
+          </div>
+          <div class="lg:col-span-3 glass rounded-xl divide-y divide-white/10" id="singlesList"></div>
+        </div>
+        <p class="mt-3 text-xs text-white/40">Previews are placeholders. Add audio links in the <code>SINGLES</code> array at the bottom of the file.</p>
+      </div>
+
+      <div id="mixtapes" class="tab-panel"><div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="mixtapeGrid"></div></div>
+
+      <div id="albums" class="tab-panel">
+        <div class="glass rounded-2xl p-6 sm:p-10 grid lg:grid-cols-2 gap-10 items-center">
+          <div class="sleeve" id="sleeve">
+            <div class="record"><div class="vinyl spin-slow"><div class="label" style="font-size:1.1rem">CCR</div></div></div>
+            <div class="cover-front art" id="albumArt"></div>
+          </div>
+          <div>
+            <p class="text-neon text-xs tracking-[.3em] uppercase">Studio Album · Cosmic Champion Records</p>
+            <h3 class="font-display text-5xl sm:text-6xl uppercase mt-2">Champion Orbit</h3>
+            <p class="mt-4 text-white/70">A full-length studio project from Maliisn Mansson. Nairobi street poetry meets deep-space production. Replace this blurb with your album story, release date and credits.</p>
+            <ol class="mt-6 grid sm:grid-cols-2 gap-x-8 gap-y-1 text-sm text-white/70 list-decimal list-inside marker:text-gold">
+              <li>Launch Sequence</li><li>Nairobi Nights</li><li>Gold Teeth, Silver Stars</li><li>Mtaa Meteor</li><li>Champion Anthem</li><li>Orbit (Interlude)</li><li>Heavy Is The Crown</li><li>Re-Entry</li>
+            </ol>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <button class="btn btn-gold" data-add="album">Buy Album · KES 1,000</button>
+              <button class="btn btn-ghost" data-preview="Champion Orbit">▶ Preview</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="features" class="tab-panel"><div class="grid md:grid-cols-2 gap-5" id="featureGrid"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MERCH ================= -->
+<section id="merch" class="relative py-24 px-5 bg-black/35">
+  <div class="max-w-7xl mx-auto">
+    <div class="reveal">
+      <p class="stamp text-lg">Wear The Orbit</p>
+      <h2 class="font-display text-5xl sm:text-7xl uppercase">Official <span class="text-neon glow-neon">Merch</span></h2>
+      <p class="mt-3 text-white/60 max-w-xl">Limited CCR drops. Every piece carries the Cosmic Champion Records tag. Hover for the 3D tilt.</p>
+    </div>
+    <div id="merchGrid" class="mt-12 grid sm:grid-cols-2 xl:grid-cols-4 gap-6 reveal"></div>
+  </div>
+</section>
+
+<!-- ================= BIO ================= -->
+<section id="bio" class="py-24 px-5">
+  <div class="max-w-6xl mx-auto grid lg:grid-cols-5 gap-10 items-center">
+    <div class="lg:col-span-2 reveal">
+      <div class="art glass tilt" style="background:#0a0716;">
+        <svg viewBox="0 0 400 400" aria-label="Portrait placeholder">
+          <defs>
+            <radialGradient id="bg1" cx=".5" cy=".35" r=".8"><stop offset="0" stop-color="#f5c451" stop-opacity=".65"/><stop offset=".5" stop-color="#a35bff" stop-opacity=".4"/><stop offset="1" stop-color="#05040a"/></radialGradient>
+            <linearGradient id="sil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b1030"/><stop offset="1" stop-color="#05040a"/></linearGradient>
+          </defs>
+          <rect width="400" height="400" fill="url(#bg1)"/>
+          <circle cx="200" cy="170" r="120" fill="none" stroke="#f5c451" stroke-width="2" stroke-dasharray="6 10" opacity=".6"/>
+          <circle cx="200" cy="170" r="150" fill="none" stroke="#39ffb6" stroke-width="1" opacity=".4"/>
+          <!-- silhouette: beanie, head, shoulders -->
+          <path d="M80 400c0-70 50-105 120-105s120 35 120 105z" fill="url(#sil)"/>
+          <ellipse cx="200" cy="205" rx="52" ry="64" fill="url(#sil)"/>
+          <path d="M146 180c0-48 24-70 54-70s54 22 54 70z" fill="#0d0820" stroke="#f5c451" stroke-width="2"/>
+          <rect x="144" y="170" width="112" height="22" rx="6" fill="#16102c" stroke="#f5c451" stroke-width="2"/>
+          <text x="200" y="187" text-anchor="middle" font-family="Anton" font-size="14" fill="#f5c451" letter-spacing="3">CCR</text>
+          <path d="M100 110l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" fill="#fff6d6"/><path d="M310 80l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#39ffb6"/>
+          <text x="200" y="385" text-anchor="middle" font-family="Space Grotesk" font-size="12" fill="rgba(255,255,255,.5)" letter-spacing="4">PHOTO PLACEHOLDER</text>
+        </svg>
+      </div>
+    </div>
+    <div class="lg:col-span-3 reveal">
+      <p class="stamp text-lg">The Story</p>
+      <h2 class="font-display text-5xl sm:text-7xl uppercase">Meet <span class="shimmer">Maliisn</span></h2>
+      <div class="mt-6 space-y-4 text-white/75 text-lg">
+        <p>Maliisn Mansson is a Kenyan hip-hop artist carrying the culture of the streets to the stars. Under <strong class="text-white">Cosmic Champion Records LLC</strong>, he builds a sound that is raw, authentic and unapologetically ambitious.</p>
+        <p>Edit this section with your real story: where you grew up, your come-up, milestones, shows, awards and the vision behind the label.</p>
+      </div>
+      <div class="mt-8 relative pl-6 border-l border-white/15 space-y-5">
+        <div class="relative"><span class="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-gold shadow-[0_0_14px_#f5c451]"></span><b class="text-gold">The Come-Up</b><p class="text-white/60 text-sm">Write your origin story here.</p></div>
+        <div class="relative"><span class="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-neon shadow-[0_0_14px_#39ffb6]"></span><b class="text-neon">Cosmic Champion Records</b><p class="text-white/60 text-sm">Founding of the label and first releases.</p></div>
+        <div class="relative"><span class="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-plasma shadow-[0_0_14px_#a35bff]"></span><b class="text-plasma">Champion Orbit</b><p class="text-white/60 text-sm">Debut studio album and what's next.</p></div>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="#" class="btn btn-line">Instagram</a><a href="#" class="btn btn-line">YouTube</a><a href="#" class="btn btn-line">Spotify</a><a href="#" class="btn btn-line">TikTok</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CHECKOUT ================= -->
+<section id="checkout" class="py-24 px-5 bg-black/35">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal">
+      <p class="stamp text-lg">Support The Movement</p>
+      <h2 class="font-display text-5xl sm:text-7xl uppercase">Checkout & <span class="shimmer">Payments</span></h2>
+      <p class="mt-3 text-white/60 max-w-2xl">Buy music, event tickets or merch by bank transfer or PayPal. After paying, send your proof of payment and order details to the label so we can deliver your order.</p>
+    </div>
+
+    <div class="mt-12 grid md:grid-cols-2 gap-6 reveal">
+      <div class="glass rounded-xl p-7 relative overflow-hidden">
+        <svg class="absolute -right-6 -top-6 w-40 opacity-20" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 8L6 32h88zM14 40h12v34H14zm30 0h12v34H44zm30 0h12v34H74zM8 82h84v10H8z" fill="#39ffb6"/></svg>
+        <h3 class="font-display text-3xl uppercase text-neon glow-neon">Bank Transfer</h3>
+        <dl class="mt-6 space-y-5">
+          <div><dt class="text-[11px] tracking-[.25em] uppercase text-white/50">Account Name</dt>
+            <dd class="flex items-center justify-between gap-3 mt-1"><span class="font-bold text-lg break-all" id="accName">MAXMILLAN BIRJE MANOAH</span><button class="btn btn-line !py-2 !px-3 shrink-0" data-copy="#accName">Copy</button></dd></div>
+          <div><dt class="text-[11px] tracking-[.25em] uppercase text-white/50">Branch Code</dt>
+            <dd class="flex items-center justify-between gap-3 mt-1"><span class="font-bold text-lg" id="branchCode">161</span><button class="btn btn-line !py-2 !px-3 shrink-0" data-copy="#branchCode">Copy</button></dd></div>
+        </dl>
+        <p class="mt-6 text-xs text-white/40">Need the account number or bank name? Message the label and we'll send them with your order reference.</p>
+      </div>
+      <div class="glass rounded-xl p-7 relative overflow-hidden">
+        <svg class="absolute -right-4 -top-4 w-36 opacity-20" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="44" fill="none" stroke="#f5c451" stroke-width="6"/><path d="M50 22v56M36 38c0-8 28-8 28 2s-28 6-28 18 28 10 28 2" fill="none" stroke="#f5c451" stroke-width="6" stroke-linecap="round"/></svg>
+        <h3 class="font-display text-3xl uppercase text-gold glow-gold">PayPal</h3>
+        <div class="mt-6">
+          <div class="text-[11px] tracking-[.25em] uppercase text-white/50">PayPal Email</div>
+          <div class="flex items-center justify-between gap-3 mt-1"><span class="font-bold text-lg break-all" id="ppMail">billbirje@yahoo.com</span><button class="btn btn-line !py-2 !px-3 shrink-0" data-copy="#ppMail">Copy</button></div>
+        </div>
+        <a id="ppLink" target="_blank" rel="noopener" href="https://www.paypal.com/myaccount/transfer/homepage/send" class="btn btn-gold w-full mt-8">Pay With PayPal →</a>
+        <p class="mt-4 text-xs text-white/40">On PayPal, choose "Send", enter the email above, and add your order details in the note.</p>
+      </div>
+    </div>
+
+    <div class="mt-6 glass rounded-xl p-7 reveal">
+      <h3 class="font-display text-2xl uppercase">How it works</h3>
+      <ol class="mt-4 grid sm:grid-cols-3 gap-4 text-sm text-white/70">
+        <li><span class="font-display text-3xl text-gold block">01</span>Add items to your cart or choose music / tickets.</li>
+        <li><span class="font-display text-3xl text-neon block">02</span>Pay by bank transfer or PayPal using the details above.</li>
+        <li><span class="font-display text-3xl text-plasma block">03</span>Send proof of payment and your order summary to the label.</li>
+      </ol>
+      <button id="checkoutBtn" class="btn btn-ghost mt-6">Review Cart & Copy Order Summary</button>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="border-t border-white/10 py-12 px-5 text-center pb-28">
+  <div class="font-display text-3xl tracking-widest shimmer inline-block">COSMIC CHAMPION RECORDS LLC</div>
+  <p class="text-white/40 text-sm mt-2">Maliisn Mansson · Kenyan Hip-Hop · © <span id="yr"></span> All rights reserved.</p>
+</footer>
+
+<!-- ================= NOW PLAYING ================= -->
+<div id="player">
+  <div class="glass !rounded-none !border-x-0 !border-b-0 px-4 py-3">
+    <div class="max-w-7xl mx-auto flex items-center gap-4">
+      <div class="vinyl spinning w-12 shrink-0" id="pVinyl"><div class="label" style="font-size:.5rem">CCR</div></div>
+      <div class="min-w-0 flex-1">
+        <div class="text-[10px] tracking-[.3em] uppercase text-neon">Now Playing</div>
+        <div class="font-bold truncate" id="pTitle">-</div>
+        <div class="progress mt-2 rounded"><i id="pBar"></i></div>
+      </div>
+      <span class="eqbars hidden sm:inline-flex"><i></i><i></i><i></i><i></i><i></i></span>
+      <button id="pToggle" class="btn btn-gold !py-2 !px-4">❚❚</button>
+      <button id="pClose" class="btn btn-line !py-2 !px-3" aria-label="Close player">✕</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= CART ================= -->
+<div id="overlay" class="fixed inset-0 bg-black/70 z-[110]"></div>
+<aside id="drawer" class="fixed top-0 right-0 h-full w-full max-w-md z-[120] glass !bg-[#0a0716]/95 flex flex-col">
+  <div class="flex items-center justify-between p-5 border-b border-white/10"><h3 class="font-display text-3xl uppercase text-gold">Your Cart</h3><button id="closeCart" class="btn btn-line !py-1 !px-3">✕</button></div>
+  <div id="cartItems" class="flex-1 overflow-y-auto p-5 space-y-4"></div>
+  <div class="p-5 border-t border-white/10">
+    <div class="flex justify-between text-lg mb-4"><span>Total</span><span id="cartTotal" class="font-bold text-gold">KES 0</span></div>
+    <a href="#checkout" id="goPay" class="btn btn-gold w-full">Proceed to Payment</a>
+    <button id="clearCart" class="w-full mt-3 text-xs text-white/40 hover:text-white">Clear cart</button>
+  </div>
+</aside>
+<div id="toast" class="toast glass rounded-full px-5 py-3 text-sm"></div>
+
+<script>
+/* =================== CONTENT (edit me) =================== */
+const SINGLES = [
+  { title:'Launch Sequence',          meta:'Single · 3:12', price:100, src:'' },
+  { title:'Nairobi Nights',           meta:'Single · 3:40', price:100, src:'' },
+  { title:'Gold Teeth, Silver Stars', meta:'Single · 2:58', price:100, src:'' },
+  { title:'Mtaa Meteor',              meta:'Single · 3:25', price:100, src:'' },
+  { title:'Champion Anthem',          meta:'Single · 3:51', price:100, src:'' },
+];
+const MIXTAPES = [
+  { title:'Street Gravity', year:'Mixtape Vol. 1', desc:'Raw freestyles and street tales that started the orbit. 12 tracks of pure Nairobi grit.', art:'rings', price:300 },
+  { title:'Moon Money',     year:'Mixtape Vol. 2', desc:'Hustle anthems with luminous, late-night production. For the ones building from zero.', art:'sun', price:300 },
+  { title:'Dark Matter',    year:'Mixtape Vol. 3', desc:'Heavy 808s, introspective verses and cosmic textures. The most personal tape yet.', art:'nebula', price:300 },
+];
+const FEATURES = [
+  { artist:'Guest Artist Name', track:'Track Title', note:'Collab on a heavy Nairobi anthem. Replace with real credits.' },
+  { artist:'Guest Artist Name', track:'Track Title', note:'Verse on a guest-led single. Add release year and platform links.' },
+  { artist:'Guest Artist Name', track:'Track Title', note:'Cypher feature with the CCR family.' },
+  { artist:'Guest Artist Name', track:'Track Title', note:'Remix and cross-genre collaboration.' },
+];
+const MERCH = [
+  { id:'marvin', name:'CCR Marvin Beanie', price:1200, tag:'CCR', desc:'Heavyweight knit marvin with embroidered CCR tag. Stay warm, stay cosmic.', c:['#a35bff','#39ffb6'], sizes:['One Size'] },
+  { id:'cap',    name:'Champion Cap',      price:1800, tag:'CCR', desc:'Structured cap, gold thread logo, adjustable strap.', c:['#f5c451','#ff9d2e'], sizes:['One Size'] },
+  { id:'hoodie', name:'Orbit Hoodie',      price:4500, tag:'CCR', desc:'Premium heavy fleece hoodie with oversized cosmic back print.', c:['#39ffb6','#a35bff'], sizes:['S','M','L','XL','XXL'] },
+  { id:'custom', name:'Custom Made Design',price:3000, tag:'CCR Custom', desc:'Your idea, our press. Send the concept after payment and we build it. Starting price.', c:['#ff4d9d','#f5c451'], sizes:['Tee','Hoodie','Cap','Marvin'] },
+];
+
+/* =================== HELPERS =================== */
+const $ = (s,r=document)=>r.querySelector(s), $$ = (s,r=document)=>[...r.querySelectorAll(s)];
+const kes = n => 'KES ' + n.toLocaleString('en-KE');
+function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove('show'),2200); }
+$('#yr').textContent = new Date().getFullYear();
+const isTouch = !matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+/* =================== GENERATIVE ART =================== */
+let uid = 0;
+function coverArt(type, label){
+  const id = 'g'+(uid++);
+  const text = `<text x="16" y="372" font-family="Anton" font-size="34" fill="#fff" letter-spacing="2" style="paint-order:stroke" stroke="rgba(0,0,0,.5)" stroke-width="4">${label}</text><text x="384" y="30" text-anchor="end" font-family="Anton" font-size="14" fill="#f5c451" letter-spacing="3">CCR</text>`;
+  if (type==='rings'){
+    let r=''; for(let i=1;i<=9;i++) r+=`<circle cx="200" cy="190" r="${i*20}" fill="none" stroke="${i%2?'#f5c451':'#a35bff'}" stroke-width="${i%3?1.5:4}" opacity="${1-i*.07}"/>`;
+    return `<svg viewBox="0 0 400 400"><defs><radialGradient id="${id}" cx=".5" cy=".47" r=".8"><stop offset="0" stop-color="#7a3cff"/><stop offset="1" stop-color="#0a0420"/></radialGradient></defs><rect width="400" height="400" fill="url(#${id})"/>${r}<circle cx="200" cy="190" r="14" fill="#fff6d6"/>${text}</svg>`;
+  }
+  if (type==='sun'){
+    let b=''; for(let i=0;i<9;i++) b+=`<rect x="0" y="${215+i*14}" width="400" height="${1+i*1.6}" fill="#05040a"/>`;
+    return `<svg viewBox="0 0 400 400"><defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff4d9d"/><stop offset=".6" stop-color="#f5c451"/></linearGradient><linearGradient id="${id}b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#062a20"/><stop offset="1" stop-color="#05040a"/></linearGradient></defs><rect width="400" height="400" fill="url(#${id}b)"/><circle cx="200" cy="200" r="120" fill="url(#${id})"/>${b}<g stroke="#39ffb6" stroke-width="1" opacity=".7">${Array.from({length:14},(_,i)=>`<line x1="200" y1="300" x2="${-300+i*80}" y2="400"/>`).join('')}${Array.from({length:5},(_,i)=>`<line x1="0" y1="${315+i*22}" x2="400" y2="${315+i*22}"/>`).join('')}</g>${text}</svg>`;
+  }
+  // nebula
+  let s=''; for(let i=0;i<46;i++){ const x=(i*67)%400,y=(i*131)%400; s+=`<circle cx="${x}" cy="${y}" r="${(i%3)+.6}" fill="#fff" opacity="${.3+(i%5)*.14}"/>`; }
+  return `<svg viewBox="0 0 400 400"><defs><filter id="${id}f"><feTurbulence type="fractalNoise" baseFrequency=".012" numOctaves="4" seed="7"/><feColorMatrix values="0 0 0 0 .64  0 0 0 0 .36  0 0 0 0 1  0 0 0 1.6 -.5"/></filter><radialGradient id="${id}"><stop offset="0" stop-color="#f5c451"/><stop offset=".6" stop-color="#a35bff"/><stop offset="1" stop-color="#05040a"/></radialGradient></defs><rect width="400" height="400" fill="#07030f"/><rect width="400" height="400" filter="url(#${id}f)"/><circle cx="260" cy="150" r="80" fill="url(#${id})" opacity=".9"/><circle cx="260" cy="150" r="80" fill="none" stroke="#39ffb6" stroke-width="2" opacity=".6"/>${s}${text}</svg>`;
+}
+function albumArt(){
+  return `<svg viewBox="0 0 400 400"><defs><conicGradient id="x"/><linearGradient id="ab" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a0b3a"/><stop offset="1" stop-color="#05040a"/></linearGradient><radialGradient id="ap" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#ffe9a8"/><stop offset=".5" stop-color="#f5c451"/><stop offset="1" stop-color="#7a3cff"/></radialGradient></defs>
+  <rect width="400" height="400" fill="url(#ab)"/>
+  <ellipse cx="200" cy="215" rx="190" ry="48" fill="none" stroke="#39ffb6" stroke-width="3" transform="rotate(-16 200 215)" opacity=".8"/>
+  <circle cx="200" cy="205" r="92" fill="url(#ap)"/>
+  <path d="M120 195q80 24 160-6M114 225q86 28 176-10" stroke="rgba(0,0,0,.25)" stroke-width="8" fill="none"/>
+  <ellipse cx="200" cy="215" rx="190" ry="48" fill="none" stroke="#39ffb6" stroke-width="3" transform="rotate(-16 200 215)" stroke-dasharray="170 500" stroke-dashoffset="-310"/>
+  <path d="M140 92l10-34 30 24 20-38 20 38 30-24 10 34z" fill="#fff2c4" stroke="#ff9d2e" stroke-width="2"/>
+  <text x="200" y="338" text-anchor="middle" font-family="Anton" font-size="46" fill="#fff" letter-spacing="4">CHAMPION</text>
+  <text x="200" y="378" text-anchor="middle" font-family="Anton" font-size="34" fill="#f5c451" letter-spacing="14">ORBIT</text></svg>`;
+}
+function merchArt(id, c){
+  const g = `<defs><linearGradient id="m${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${c[0]}"/><stop offset="1" stop-color="${c[1]}"/></linearGradient><radialGradient id="mb${id}" cx=".5" cy=".4" r=".7"><stop offset="0" stop-color="${c[0]}" stop-opacity=".35"/><stop offset="1" stop-color="#05040a" stop-opacity="0"/></radialGradient><filter id="mf${id}"><feDropShadow dx="0" dy="10" stdDeviation="9" flood-color="#000" flood-opacity=".6"/></filter></defs><rect width="400" height="400" fill="#0a0716"/><circle cx="200" cy="200" r="170" fill="url(#mb${id})"/><circle cx="200" cy="200" r="150" fill="none" stroke="rgba(255,255,255,.07)" stroke-dasharray="4 8"/>`;
+  const tag = (x,y)=>`<rect x="${x}" y="${y}" width="46" height="18" rx="3" fill="#05040a" stroke="#f5c451"/><text x="${x+23}" y="${y+13}" text-anchor="middle" font-family="Anton" font-size="12" fill="#f5c451" letter-spacing="2">CCR</text>`;
+  const star=(x,y,s=1)=>`<path transform="translate(${x} ${y}) scale(${s})" d="M0-10l2.5 7.5L10 0l-7.5 2.5L0 10l-2.5-7.5L-10 0l7.5-2.5z" fill="#fff6d6"/>`;
+  if(id==='marvin'){
+    let ribs=''; for(let i=0;i<13;i++) ribs+=`<path d="M${100+i*16} 120Q${96+i*16} 190 ${100+i*16} 232" stroke="rgba(0,0,0,.22)" stroke-width="3" fill="none"/>`;
+    return `<svg viewBox="0 0 400 400">${g}<g filter="url(#mf${id})"><path d="M92 240C80 120 150 70 200 70s120 50 108 170z" fill="url(#m${id})"/>${ribs}<rect x="82" y="226" width="236" height="62" rx="14" fill="url(#m${id})"/><rect x="82" y="226" width="236" height="62" rx="14" fill="rgba(0,0,0,.25)"/>${[0,1,2,3,4,5,6,7,8,9,10,11,12,13].map(i=>`<line x1="${96+i*16.5}" y1="232" x2="${96+i*16.5}" y2="282" stroke="rgba(255,255,255,.18)" stroke-width="3"/>`).join('')}${tag(177,243)}</g>${star(310,100,1.4)}${star(88,150,.9)}</svg>`;
+  }
+  if(id==='cap'){
+    return `<svg viewBox="0 0 400 400">${g}<g filter="url(#mf${id})"><path d="M96 240C90 130 150 84 214 84s110 56 98 156z" fill="url(#m${id})"/><path d="M214 84C190 130 188 190 192 240" stroke="rgba(0,0,0,.25)" stroke-width="3" fill="none"/><path d="M250 90C268 140 270 195 262 240" stroke="rgba(0,0,0,.2)" stroke-width="3" fill="none"/><path d="M74 246C150 268 300 270 340 252c28-12 24 26-14 40-70 26-190 26-246 6-20-8-22-40-6-52z" fill="#111" stroke="${c[0]}" stroke-width="3"/><circle cx="214" cy="84" r="7" fill="#fff2c4"/><g transform="translate(140 150)"><path d="M0 38l6-22 16 14 12-22 12 22 16-14 6 22z" fill="#111"/></g></g>${star(330,110,1.2)}${star(76,120,1)}</svg>`;
+  }
+  if(id==='hoodie'){
+    return `<svg viewBox="0 0 400 400">${g}<g filter="url(#mf${id})"><path d="M120 110L66 164l30 150 46-12 4 66h108l4-66 46 12 30-150-54-54-36 20c-12 18-28 28-56 28s-44-10-56-28z" fill="url(#m${id})"/><path d="M146 92C150 56 250 56 254 92c-10 26-30 40-54 40s-44-14-54-40z" fill="rgba(0,0,0,.35)" stroke="${c[0]}" stroke-width="2"/><path d="M180 128v50M220 128v50" stroke="#fff6d6" stroke-width="4" stroke-linecap="round"/><path d="M150 290h100l14 40H136z" fill="rgba(0,0,0,.28)"/><circle cx="200" cy="224" r="36" fill="rgba(5,4,10,.7)" stroke="#f5c451" stroke-width="2"/><ellipse cx="200" cy="224" rx="52" ry="12" fill="none" stroke="#39ffb6" stroke-width="2" transform="rotate(-18 200 224)"/><path d="M184 220l5-10 11 8 11-8 5 10z" fill="#f5c451"/>${tag(177,262)}</g>${star(326,96,1.3)}${star(78,112,.9)}</svg>`;
+  }
+  // custom: spray can + paint burst
+  return `<svg viewBox="0 0 400 400">${g}<g filter="url(#mf${id})"><rect x="152" y="140" width="96" height="190" rx="14" fill="url(#m${id})"/><rect x="152" y="140" width="96" height="190" rx="14" fill="rgba(0,0,0,.18)"/><path d="M160 150v170" stroke="rgba(255,255,255,.35)" stroke-width="6" stroke-linecap="round"/><path d="M164 140c0-24 16-34 36-34s36 10 36 34z" fill="#222" stroke="#aaa" stroke-width="2"/><rect x="186" y="82" width="28" height="26" rx="4" fill="${c[1]}"/><rect x="152" y="196" width="96" height="62" fill="#05040a"/><text x="200" y="236" text-anchor="middle" font-family="Anton" font-size="26" fill="#f5c451" letter-spacing="3">CCR</text></g>${Array.from({length:26},(_,i)=>{const a=(i/26)*Math.PI*.9+Math.PI*1.05;const r=40+((i*37)%110);return `<circle cx="${186+Math.cos(a)*r}" cy="${90+Math.sin(a)*r*-.8+60}" r="${2+(i%4)}" fill="${i%2?c[0]:c[1]}" opacity=".85"/>`}).join('')}<path d="M70 170q24-30 48 0t48 0" stroke="${c[0]}" stroke-width="6" fill="none" stroke-linecap="round" opacity=".8"/>${star(330,120,1.4)}${star(78,300,1)}</svg>`;
+}
+
+/* =================== RENDER =================== */
+$('#marq').innerHTML = Array(4).fill('<span class="px-6">Cosmic Champion Records ✦ Maliisn Mansson ✦ Kenyan Hip-Hop ✦ New Music ✦ Official Merch ✦</span>').join('');
+
+const waveBars = i => Array.from({length:34},(_,k)=>{ const h = 20 + Math.abs(Math.sin((k+1)*(i+2)*.7))*80; return `<i style="height:${h}%;animation-delay:${(k*.05).toFixed(2)}s"></i>`; }).join('');
+$('#singlesList').innerHTML = SINGLES.map((s,i)=>`
+  <div class="row flex items-center gap-4 p-4 sm:p-5 hover:bg-white/5 transition" data-row="${i}">
+    <button class="play w-12 h-12 shrink-0 rounded-full border border-neon text-neon flex items-center justify-center hover:bg-neon hover:text-black transition shadow-[0_0_18px_rgba(57,255,182,.25)]" data-i="${i}" aria-label="Play ${s.title}">▶</button>
+    <div class="flex-1 min-w-0">
+      <div class="font-bold truncate">${String(i+1).padStart(2,'0')} · ${s.title}</div>
+      <div class="text-xs text-white/50 mb-1">Maliisn Mansson · ${s.meta}</div>
+      <div class="wave hidden sm:flex">${waveBars(i)}</div>
+    </div>
+    <button class="btn btn-line !py-2 !px-4 hidden sm:inline-flex" data-add="single-${i}">Buy ${kes(s.price)}</button>
+  </div>`).join('');
+
+$('#mixtapeGrid').innerHTML = MIXTAPES.map((m,i)=>`
+  <article class="glass rounded-xl p-4 tilt">
+    <div class="art">${coverArt(m.art, m.title.toUpperCase())}</div>
+    <div class="mt-4 text-xs tracking-[.25em] uppercase text-neon">${m.year}</div>
+    <h3 class="font-display text-3xl uppercase mt-1">${m.title}</h3>
+    <p class="text-sm text-white/65 mt-2">${m.desc}</p>
+    <div class="mt-5 flex gap-2"><button class="btn btn-gold !py-2 !px-4" data-add="mix-${i}">Buy ${kes(m.price)}</button><button class="btn btn-line !py-2 !px-4" data-preview="${m.title}">▶ Preview</button></div>
+  </article>`).join('');
+
+$('#featureGrid').innerHTML = FEATURES.map((f,i)=>`
+  <div class="glass rounded-xl p-6 flex gap-5 items-center tilt">
+    <div class="vinyl spin-slow w-24 shrink-0" style="animation-duration:${8+i*2}s"><div class="label" style="font-size:.6rem">FT.</div></div>
+    <div><div class="text-xs tracking-[.25em] uppercase text-neon">ft. ${f.artist}</div><div class="font-display text-2xl uppercase">${f.track}</div><p class="text-sm text-white/60">${f.note}</p></div>
+  </div>`).join('');
+
+$('#albumArt').innerHTML = albumArt();
+
+$('#merchGrid').innerHTML = MERCH.map(p=>`
+  <article class="glass rounded-xl p-4 tilt flex flex-col">
+    <div class="art">${merchArt(p.id,p.c)}<span class="absolute top-3 left-3 bg-black/70 border border-gold text-gold text-[11px] tracking-[.25em] px-2 py-1 font-bold">${p.tag}</span></div>
+    <h3 class="font-display text-2xl uppercase mt-4">${p.name}</h3>
+    <p class="text-sm text-white/60 mt-1 flex-1">${p.desc}</p>
+    <div class="mt-4 flex items-center justify-between"><span class="text-gold font-bold text-xl">${kes(p.price)}</span><select class="size" id="size-${p.id}">${p.sizes.map(s=>`<option>${s}</option>`).join('')}</select></div>
+    <div class="mt-4 grid grid-cols-2 gap-2"><button class="btn btn-line !px-2" data-merch="${p.id}">Add to Cart</button><button class="btn btn-gold !px-2" data-merch="${p.id}" data-buy="1">Buy Now</button></div>
+  </article>`).join('');
+
+/* =================== NAV / TABS =================== */
+$('#menuBtn').onclick = () => { const m=$('#mobileNav'); m.classList.toggle('hidden'); m.classList.toggle('flex'); };
+$$('#mobileNav a').forEach(a=>a.onclick=()=>{ $('#mobileNav').classList.add('hidden'); $('#mobileNav').classList.remove('flex'); });
+function showTab(id){ $$('.tab-btn').forEach(b=>b.classList.toggle('active',b.dataset.tab===id)); $$('.tab-panel').forEach(p=>p.classList.toggle('active',p.id===id)); }
+$$('.tab-btn').forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
+$$('.goto-tab').forEach(a=>a.addEventListener('click',()=>showTab(a.dataset.tab)));
+$('#sleeve').addEventListener('click',()=>$('#sleeve').classList.toggle('out'));
+
+/* =================== PLAYER =================== */
+const audio = new Audio(); let cur=-1, sim=null, simT=0, isPlaying=false, curLabel='';
+function setUI(on){
+  isPlaying=on;
+  $('#pToggle').textContent = on ? '❚❚' : '▶';
+  $('#pVinyl').classList.toggle('spinning', on);
+  $('#bigVinyl').classList.toggle('spinning', on);
+  $$('.row').forEach(r=>{ const act = +r.dataset.row===cur && on; r.classList.toggle('playing',act); $('.play',r).textContent = act ? '❚❚' : '▶'; });
+}
+function stopSim(){ clearInterval(sim); sim=null; }
+function startSim(){ stopSim(); sim=setInterval(()=>{ simT+=.25; $('#pBar').style.width=Math.min(100,simT/30*100)+'%'; if(simT>=30){ stopSim(); setUI(false); simT=0; $('#pBar').style.width='0'; } },250); }
+function playTrack(title, src, idx){
+  curLabel=title; cur=idx; $('#pTitle').textContent=title+' · Maliisn Mansson'; $('#player').classList.add('show'); $('#bigVinylLbl').textContent=title;
+  stopSim(); audio.pause(); simT=0; $('#pBar').style.width='0';
+  if(src){ audio.src=src; audio.play().catch(()=>{}); } else { startSim(); toast('Preview placeholder: add an audio link for "'+title+'"'); }
+  setUI(true);
+}
+audio.addEventListener('timeupdate',()=>{ if(audio.duration) $('#pBar').style.width=(audio.currentTime/audio.duration*100)+'%'; });
+audio.addEventListener('ended',()=>setUI(false));
+$$('.play').forEach(b=>b.onclick=()=>{ const i=+b.dataset.i; if(cur===i && isPlaying){ audio.pause(); stopSim(); setUI(false); return; } playTrack(SINGLES[i].title, SINGLES[i].src, i); });
+$$('[data-preview]').forEach(b=>b.onclick=()=>{ cur=-1; playTrack(b.dataset.preview,'',-1); });
+$('#pToggle').onclick=()=>{ if(isPlaying){ audio.pause(); stopSim(); setUI(false); } else if(curLabel){ if(audio.src && audio.src!==location.href && !sim && audio.currentTime>0) audio.play(); else startSim(); setUI(true); } };
+$('#pClose').onclick=()=>{ audio.pause(); stopSim(); setUI(false); cur=-1; $('#player').classList.remove('show'); };
+
+/* =================== CART =================== */
+let cart=[]; try{ cart=JSON.parse(localStorage.getItem('ccr_cart')||'[]'); }catch(e){}
+const save=()=>{ try{ localStorage.setItem('ccr_cart',JSON.stringify(cart)); }catch(e){} };
+function addItem(it){ const f=cart.find(c=>c.key===it.key); f?f.qty++:cart.push({...it,qty:1}); save(); renderCart(); toast(it.name+' added to cart'); $('#cartBtn').animate([{transform:'scale(1)'},{transform:'scale(1.15)'},{transform:'scale(1)'}],{duration:350}); }
+function lookup(code){
+  if(code==='album') return {key:'album',name:'Album: Champion Orbit',price:1000};
+  if(code.startsWith('single-')){ const s=SINGLES[+code.split('-')[1]]; return {key:code,name:'Single: '+s.title,price:s.price}; }
+  if(code.startsWith('mix-')){ const m=MIXTAPES[+code.split('-')[1]]; return {key:code,name:'Mixtape: '+m.title,price:m.price}; }
+}
+document.addEventListener('click',e=>{
+  const a=e.target.closest('[data-add]'); if(a){ addItem(lookup(a.dataset.add)); return; }
+  const m=e.target.closest('[data-merch]');
+  if(m){ const p=MERCH.find(x=>x.id===m.dataset.merch), size=$('#size-'+p.id).value; addItem({key:p.id+'-'+size,name:p.name+' ('+size+')',price:p.price}); if(m.dataset.buy){ closeCart(); location.hash='#checkout'; } }
+});
+function renderCart(){
+  const total=cart.reduce((s,c)=>s+c.price*c.qty,0);
+  $('#cartCount').textContent=cart.reduce((s,c)=>s+c.qty,0); $('#cartTotal').textContent=kes(total);
+  $('#cartItems').innerHTML = cart.length ? cart.map((c,i)=>`<div class="glass rounded-lg p-4 flex items-center gap-3"><div class="flex-1 min-w-0"><div class="font-bold truncate">${c.name}</div><div class="text-xs text-white/50">${kes(c.price)} each</div></div><div class="flex items-center gap-2"><button class="btn btn-line !p-1 !w-7 !h-7" data-q="${i}" data-d="-1">−</button><span>${c.qty}</span><button class="btn btn-line !p-1 !w-7 !h-7" data-q="${i}" data-d="1">+</button></div></div>`).join('') : '<p class="text-white/50 text-center mt-10">Your cart is empty.<br>Go grab some heat. 🔥</p>';
+}
+$('#cartItems').addEventListener('click',e=>{ const b=e.target.closest('[data-q]'); if(!b) return; const i=+b.dataset.q; cart[i].qty+=+b.dataset.d; if(cart[i].qty<=0) cart.splice(i,1); save(); renderCart(); });
+const openCart=()=>{ $('#drawer').classList.add('open'); $('#overlay').classList.add('open'); };
+const closeCart=()=>{ $('#drawer').classList.remove('open'); $('#overlay').classList.remove('open'); };
+$('#cartBtn').onclick=openCart; $('#closeCart').onclick=closeCart; $('#overlay').onclick=closeCart; $('#goPay').onclick=closeCart;
+$('#clearCart').onclick=()=>{ cart=[]; save(); renderCart(); };
+renderCart();
+
+/* =================== COPY =================== */
+async function copyText(t,l){ try{ await navigator.clipboard.writeText(t); }catch(e){ const x=document.createElement('textarea'); x.value=t; document.body.appendChild(x); x.select(); document.execCommand('copy'); x.remove(); } toast((l||'Copied')+' copied to clipboard'); }
+$$('[data-copy]').forEach(b=>b.onclick=()=>copyText($(b.dataset.copy).textContent.trim(),'Details'));
+$('#checkoutBtn').onclick=()=>{ if(!cart.length){ toast('Your cart is empty'); openCart(); return; } const lines=cart.map(c=>`${c.qty} x ${c.name} - ${kes(c.price*c.qty)}`); copyText(`Cosmic Champion Records order\n${lines.join('\n')}\nTotal: ${kes(cart.reduce((s,c)=>s+c.price*c.qty,0))}`,'Order summary'); };
+
+/* =================== REVEAL + COUNTERS =================== */
+const io=new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }),{threshold:.12});
+$$('.reveal').forEach(el=>io.observe(el));
+function countUp(){ $$('[data-count]').forEach(el=>{ const to=+el.dataset.count; let n=0; const t=setInterval(()=>{ n++; el.textContent=n; if(n>=to) clearInterval(t); },220); }); }
+
+/* =================== TILT =================== */
+$$('.tilt').forEach(el=>{
+  if(isTouch) return;
+  el.addEventListener('mousemove',e=>{ const r=el.getBoundingClientRect(), x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+    el.style.transform=`perspective(900px) rotateX(${(.5-y)*10}deg) rotateY(${(x-.5)*12}deg) translateY(-4px)`; el.style.setProperty('--gx',x*100+'%'); el.style.setProperty('--gy',y*100+'%'); });
+  el.addEventListener('mouseleave',()=>{ el.style.transform=''; });
+});
+
+/* =================== CURSOR + PARALLAX =================== */
+if(!isTouch){
+  const c=$('#cursor'), d=$('#cursorDot'); let mx=innerWidth/2,my=innerHeight/2,cx=mx,cy=my;
+  addEventListener('mousemove',e=>{ mx=e.clientX; my=e.clientY; d.style.transform=`translate(${mx}px,${my}px)`; });
+  (function loop(){ cx+=(mx-cx)*.16; cy+=(my-cy)*.16; c.style.transform=`translate(${cx}px,${cy}px)`; requestAnimationFrame(loop); })();
+  document.addEventListener('mouseover',e=>{ c.classList.toggle('big', !!e.target.closest('a,button,select,.tilt,.sleeve')); });
+  const em=$('#emblem');
+  addEventListener('mousemove',e=>{ const dx=(e.clientX/innerWidth-.5), dy=(e.clientY/innerHeight-.5);
+    $$('[data-depth]',em).forEach(n=>{ const d=+n.dataset.depth; n.style.translate=`${dx*d*-2}px ${dy*d*-2}px`; }); });
+}
+
+/* =================== STARFIELD + SHOOTING STARS =================== */
+(function(){
+  const c=$('#stars'), x=c.getContext('2d'); let w,h,stars=[],shoots=[],py=0;
+  function size(){ w=c.width=innerWidth; h=c.height=innerHeight; stars=Array.from({length:Math.min(260,Math.floor(w*h/6500))},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.5+.2,z:Math.random()*.8+.2,t:Math.random()*6,c:Math.random()>.85?'#f5c451':Math.random()>.9?'#39ffb6':'#fff'})); }
+  addEventListener('scroll',()=>{ py=scrollY; },{passive:true});
+  function draw(){ x.clearRect(0,0,w,h);
+    for(const s of stars){ s.t+=.02; const yy=((s.y - py*s.z*.25)%h+h)%h; x.globalAlpha=.35+Math.sin(s.t)*.4; x.fillStyle=s.c; x.beginPath(); x.arc(s.x,yy,s.r,0,6.3); x.fill(); }
+    if(Math.random()<.008 && shoots.length<2) shoots.push({x:Math.random()*w,y:Math.random()*h*.5,vx:-9-Math.random()*5,vy:5+Math.random()*3,l:1});
+    for(let i=shoots.length-1;i>=0;i--){ const s=shoots[i]; s.x+=s.vx; s.y+=s.vy; s.l-=.02; x.globalAlpha=Math.max(s.l,0); const g=x.createLinearGradient(s.x,s.y,s.x-s.vx*7,s.y-s.vy*7); g.addColorStop(0,'#fff'); g.addColorStop(1,'transparent'); x.strokeStyle=g; x.lineWidth=2; x.beginPath(); x.moveTo(s.x,s.y); x.lineTo(s.x-s.vx*7,s.y-s.vy*7); x.stroke(); if(s.l<=0) shoots.splice(i,1); }
+    requestAnimationFrame(draw); }
+  addEventListener('resize',size); size(); draw();
+})();
+
+/* =================== LOADER =================== */
+addEventListener('load',()=>{ setTimeout(()=>{ $('#loader').classList.add('hide'); countUp(); },900); });
+setTimeout(()=>{ $('#loader').classList.add('hide'); },4000);
+</script>
+</body>
+</html>
